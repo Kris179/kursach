@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken')
 
 class TokenService {
     generateTokens(payload) {
-        const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {expiresIn: '60m'})
-        const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {expiresIn: '30d'})
+        const accessToken = jwt.sign(payload, 'super-mega-key', {expiresIn: '60m'})
+        const refreshToken = jwt.sign(payload, 'second-super-mega-key', {expiresIn: '30d'})
 
         return {
             accessToken,
@@ -40,7 +40,7 @@ class TokenService {
 
     validateAccessToken(token) {
         try {
-            const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET)
+            const userData = jwt.verify(token, 'super-mega-key')
             return userData
         } catch (e) {
             return null;
@@ -49,7 +49,7 @@ class TokenService {
 
     validateRefreshToken(token) {
         try {
-            const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET)
+            const userData = jwt.verify(token, 'second-super-mega-key')
             return userData
         } catch (e) {
             return null;

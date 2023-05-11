@@ -1,17 +1,25 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from 'yup'
 import AuthService from "../services/AuthService";
-import React from 'react';
+import React, {useState} from 'react';
 import '../styles/globalStyles.css'
+import {loginUser, setAuth} from "../actions/actions";
+import {useDispatch} from "react-redux";
 
 const FormRegister = () => {
     const {registration} = AuthService()
+    const dispatch = useDispatch()
+    const [error, setError] = useState('');
 
     const handleSubmit = async (login, password, fio, email) => {
         try {
-            await registration(login, password, fio, email)
+            const response = await registration(login, password, fio, email)
+            localStorage.setItem('token', `${response.data.accessToken}`)
+            dispatch(loginUser(response.data.user))
+            dispatch(setAuth(true))
+            document.body.style.overflow = 'auto'
         } catch (e) {
-            console.log(e.response.data.message)
+            setError(e.response.data.message)
         }
     }
 
@@ -26,6 +34,7 @@ const FormRegister = () => {
                         email: ''
                     }
                 }
+
 
                 validationSchema={Yup.object({
                     fio: Yup.string()
@@ -52,62 +61,73 @@ const FormRegister = () => {
                       resetForm
                   }) => (
                 <Form>
-                    <h1>Регистрация</h1>
-                    <div>
+                    <div style={{display: 'grid', justifyContent: 'center'}}>
 
-                            <div>
-                                <Field
-                                    name={"fio"}
-                                    className="custom-input"
-                                    id={"fio"}
-                                    type={'text'}
-                                    placeholder="&nbsp;"
-                                />
-                                <label htmlFor={'fio'}>ФИО</label>
-                                <ErrorMessage name={'fio'} component={'div'}/>
+                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                            <div style={{display: 'grid'}}>
+                                <label className={'input'} htmlFor={'fio'}>ФИО</label>
+                            <Field
+                                name={"fio"}
+                                className="custom-input"
+                                id={"fio"}
+                                type={'text'}
+                                placeholder="&nbsp;"
+                            />
+                            <ErrorMessage className={'errorMessage'} name={'fio'} component={'div'}/>
                             </div>
+                        </div>
 
 
-                        <div>
+                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                            <div style={{display: 'grid'}}>
+                                <label className={'input'} >Логин</label>
                             <Field
                                 name={"login"}
-                                className="form-control"
+                                className="custom-input"
                                 id={"login"}
                                 type={'text'}
                                 placeholder="&nbsp;"
                             />
-                            <label>Логин</label>
-                            <ErrorMessage name={'login'} component={'div'}/>
+                            <ErrorMessage className={'errorMessage'} name={'login'} component={'div'}/>
+                            </div>
                         </div>
 
-                        <div>
+                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                            <div style={{display: 'grid'}}>
+                                <label className={'input'} >Пароль</label>
                             <Field
                                 name={"password"}
-                                className="form-control"
+                                className="custom-input"
                                 id={"password"}
                                 type={'password'}
                                 placeholder="&nbsp;"
                             />
-                            <label>Пароль</label>
-                            <ErrorMessage name={'password'} component={'div'}/>
+                            <ErrorMessage className={'errorMessage'} name={'password'} component={'div'}/>
+                            </div>
                         </div>
 
-                        <div>
+                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                            <div style={{display: 'grid'}}>
+                                <label className={'input'}>Эл. почта</label>
                             <Field
                                 name={"email"}
-                                className="form-control"
+                                className="custom-input"
                                 id={"email"}
                                 placeholder="&nbsp;"
                             />
-                            <label>Эл. почта</label>
-                            <ErrorMessage name={'email'} component={'div'}/>
+                            <ErrorMessage className={'errorMessage'} name={'email'} component={'div'}/>
+                            </div>
                         </div>
                     </div>
+                    {error.length > 0 ? <p className={'errorMessage'} style={{textAlign: 'center', paddingTop: '1rem'}}>{error}</p> : null}
+
+                    <div className="center">
                 <button type={'submit'} disabled={!(isValid && dirty) || isSubmitting} onClick={async () => {
                     isSubmitting = true
                     await handleSubmit(values.login, values.password, values.fio, values.email)
                     setTimeout(() => resetForm(), 500)
-                }}>Зарегестрироваться</button>
+                }} className="register-button">Зарегистрироваться</button>
+                    </div>
                 </Form>
                     )}
             </Formik>

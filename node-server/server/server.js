@@ -4,6 +4,8 @@ const PORT = process.env.PORT || 8083
 
 const express = require('express'), http = require('http');
 const controller = require("../controller/controller");
+const Prodcont = require("../controller/prodCont");
+
 const app = express();
 const server = http.createServer(app);
 const errorMiddleware = require('../middlewares/error-middleware')
@@ -16,6 +18,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 app.use("/api", controller);
+app.use("/photo", Prodcont);
 app.use(errorMiddleware)
 
 const start = async () => {

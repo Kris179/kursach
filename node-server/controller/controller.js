@@ -16,17 +16,40 @@ const {body, validationResult} = require('express-validator')
 const authMiddleware = require('../middlewares/auth-middleware')
 
 //all-user-routes
+// router.get("/photo/:PhotoID", async (req, res) => {  const id = req.params.PhotoID || 0;
+//
+//     try {
+//         const photo = await ("photo").where("PhotoID", id).first();
+//         res.setHeader("Content-Type", photo.type);
+//         res.sendFile(photo.path);  }
+//     catch (error) {
+//         console.error(error);
+//         res.sendStatus(500);
+//     }});
 
-router.get("/products", async (req, res) => {
-    const products = await knex.withSchema("public")
-        .select('*')
-        .from('products')
-        .leftJoin('categories', 'products.category', 'categories.id')
-        .leftJoin('prices', 'products.id', 'prices.product_id')
-
-
-    res.send(products)
+router.get('/products', async (req, res) => {
+    try {
+        const products = await knex
+            .select('*')
+            .from('Products')
+        res.send(products)
+        } catch (e) {
+        res.send(err)
+    }
 });
+
+router.get('/products/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const product = await knex
+            .select('*')
+            .from('Products')
+            .where('ProductID', id)
+        res.send(product)
+    } catch (e) {
+        res.send(e)
+    }
+})
 
 //authorization-routes
 
@@ -40,16 +63,10 @@ router.post(
         .from('Users')
 
     try {
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return next(ApiError.BadRequest('Ошибка при валидации', errors.array()))
-            }
-
             const hasDuplicates = await users.some(function(currentObject) {
                 const email = currentObject.Email.toLowerCase() === req.body.email;
                 const login = currentObject.Login.toLowerCase() === req.body.login;
                 return email || login;
-
             });
 
             if (hasDuplicates) {
@@ -72,7 +89,7 @@ router.post(
             await mailService.sendActivationMail(req.body.email, `${process.env.API_URL}/api/activate/${activationLink}`)
 
             const currentUser = await knex
-                .select('Email', 'UserID', 'Activation')
+                .select('*')
                 .from('Users')
                 .where('Login', req.body.login)
 
@@ -125,19 +142,19 @@ router.post('/logout', async (req, res, next) => {
 router.get('/activate/:link', async (req, res, next) => {
     try {
         const user = await knex
-            .select('activation_link')
-            .from('users')
-            .where('activation_link', req.params.link)
+            .select('ActivationLink')
+            .from('Users')
+            .where('ActivationLink', req.params.link)
 
         if (!user) {
             throw ApiError.BadRequest('Неккоректная ссылка активации')
         }
 
         await knex
-            .select('activated')
-            .from('users')
-            .where('activation_link', req.params.link)
-            .update('activated', true)
+            .select('Activation')
+            .from('Users')
+            .where('ActivationLink', req.params.link)
+            .update('Activation', true)
 
         return res.redirect(process.env.CLIENT_URL)
     } catch (e) {
@@ -158,14 +175,15 @@ router.get('/refresh', async (req, res, next) => {
             throw ApiError.UnauthorizedError()
         }
 
+        console.log(userData)
         const user = await knex
             .select('*')
-            .from('users')
-            .where('id', userData.id)
+            .from('Users')
+            .where('UserID', userData.UserID)
 
         const userdto = new userDTO(user[0])
         const tokens = tokenService.generateTokens({...userdto})
-        await tokenService.saveToken(userdto.id, tokens.refreshToken)
+        await tokenService.saveToken(userdto.UserID, tokens.refreshToken)
 
         res.cookie('refreshToken', tokens.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
         res.send({...tokens, user: userdto})
@@ -180,7 +198,7 @@ router.get('/users', authMiddleware, async (req, res, next) => {
     try {
         const users = await knex
             .select('*')
-            .from('users')
+            .from('Users')
 
         res.send(users)
     } catch (e) {
