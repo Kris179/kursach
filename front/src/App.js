@@ -12,6 +12,7 @@ import {useDispatch} from "react-redux";
 import Admin from "./Admin";
 import Product from "./Product";
 import RegisterSuccess from "./RegisterSuccess";
+import ProductPage from "./Product"
 
 const App = () => {
 
@@ -34,7 +35,8 @@ const App = () => {
             <Router>
 
                 <Header/>
-                <Routes>
+                <ProductPage/>
+                {/* <Routes>
                     <Route exact path='/' element={<Home/>}> </Route>
                     <Route path='/about' element={<About/>}></Route>
                     <Route path='/Profile' element={<Profile/>}></Route>
@@ -43,7 +45,7 @@ const App = () => {
                     <Route path='/For_whom' element={<For_whom/>}></Route>
                     <Route path='/admin' element={<Admin/>}></Route>
                     <Route path='/register-success' element={<RegisterSuccess/>}></Route>
-                </Routes>
+                </Routes> */}
             </Router>
 
         </>
