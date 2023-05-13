@@ -16,12 +16,12 @@ function ProductPage() {
 
     return (
         <div className="product-page">
+            <div className="product_cont">
             <div className="product_info">
                 <h1 className="product-name">{product.Name}</h1>
                 <p className="product-price">{product.Price} ₽</p>
                 <button className="buy-button">Купить</button>
             </div>
-            <div className="product-content">
                 <div className="product-image">
                     <img src={photo1} alt="Moschino TOY 2 BUBBLE GUM" />
                 </div>
@@ -32,6 +32,7 @@ function ProductPage() {
             </div>
             <div className="product-description">
                 <h2>Описание</h2>
+                <div className="description_border"></div>
                 <p>{product.description}</p>
             </div>
             <div className="product-footer">

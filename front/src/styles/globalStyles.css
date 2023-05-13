@@ -357,3 +357,125 @@ body {
       }
 }
 
+
+.product-page {
+    margin: 3% auto 0 ;
+}
+
+.product_cont {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    align-content: center;
+    margin: 0 auto 75px;
+}
+
+.product_info {
+    max-width: 422px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-family: 'Arimo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 54px;
+    line-height: 62px;
+    color: #000000;
+    margin-bottom: 26px;
+}
+
+.product-price {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 33px;
+    color: #000000;
+    flex-grow: 1;
+}
+
+.buy-button {
+    border: none;
+    background-color: black;
+    color: #fff;
+    padding: 12px 48px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 30px;
+    flex-grow: 1;
+    max-width: 178px;
+    max-height: 52px;
+}
+
+.buy-button {
+
+}
+
+.product-image {
+
+}
+
+.product-sidebar {
+    max-width: 387px;
+}
+
+.sidebar_title {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 49px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.sidebar_subtitle {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.product-description {
+    max-width: 1100px;
+    margin: 0 auto 0;
+}
+
+.description_border {
+    max-width: 1280px;
+    margin: 0 auto 0;
+    border-top: 1px solid #BFBFBF;
+}
+
+.description_title {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 49px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.description_subtitle {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 80px;
+}
+
