@@ -6,13 +6,13 @@ import Home from './Home';
 import About from './About';
 import Profile from './Profile';
 import Catalog from './Catalog';
-import For_whom from './For whom';
+import ForWhom from './ForWhom';
 import {checkAuth, loginUser, setAuth} from "./actions/actions";
 import {useDispatch} from "react-redux";
 import Admin from "./Admin";
 import Product from "./Product";
 import RegisterSuccess from "./RegisterSuccess";
-import ProductPage from "./Product"
+import ProductPage from "./Product";
 
 const App = () => {
 
@@ -35,14 +35,14 @@ const App = () => {
             <Router>
 
                 <Header/>
-                <ProductPage/>
+                <Profile />
                 {/* <Routes>
                     <Route exact path='/' element={<Home/>}> </Route>
                     <Route path='/about' element={<About/>}></Route>
                     <Route path='/Profile' element={<Profile/>}></Route>
                     <Route path='/Catalog' element={<Catalog/>}></Route>
                     <Route path='/products/:id' element={<Product/>}></Route>
-                    <Route path='/For_whom' element={<For_whom/>}></Route>
+                    <Route path='/For_whom' element={<ForWhom/>}></Route>
                     <Route path='/admin' element={<Admin/>}></Route>
                     <Route path='/register-success' element={<RegisterSuccess/>}></Route>
                 </Routes> */}

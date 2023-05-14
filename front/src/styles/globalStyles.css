@@ -2,10 +2,10 @@
 
 .custom-input {
     border: 1px solid #FF0079;
-    width:300px;
-    border-radius: 5px;
-    margin-top: 5px;
-    height: 35px;
+    width: 414px;
+    border-radius: 10px;
+    height: 42px;
+    padding-left: 10px;
 
 }
 
@@ -480,4 +480,371 @@ body {
     margin-top: 16px;
     margin-bottom: 80px;
 }
+
+.forwhom_cont {
+    display: flex;
+    position: relative;
+    margin: 0 auto 0;
+    max-width: 1440px;
+    height: 700px;
+}
+
+.forwhom_description {
+  display: flex;
+  flex-direction: column;
+  max-width: 413px;
+  margin-bottom: 127px;
+}
+
+.forwhom_description_title {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 74px;
+  color: #FFFFFF;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.forwhom_description_subtitle {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFFFFF;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.forwhom_description_subtitle:last-of-type {
+  margin-bottom: 30px;
+}
+
+.forwhom_description_button {
+  border: none;
+  box-sizing: border-box;
+  width: 320px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  color: #000000;
+  border-radius: 30px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.title {
+  position: absolute;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 128px;
+  line-height: 128px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.forman {
+  width: 50%;
+  background-color: #657EFF;
+  padding-left: 80px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+.forman_title {
+  top: 286px;
+  left: -150px;
+  transform: rotate(90deg);
+}
+
+.forman_img {
+  max-height: 631px;
+}
+
+.forwoman {
+  width: 50%;
+  background-color: #FFA9A9;
+  padding-right: 80px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+.forwoman_title {
+  top: 286px;
+  right: -123px;
+  transform: rotate(-90deg);
+}
+
+.forwhom_circle {
+  position: absolute;
+  top: 38.572%;
+  right: 44.445%;
+  
+  /* display: flex; */
+  color: #FFFFFF;
+  width: 160px;
+  height: 160px;
+}
+
+.forwhom_text {
+  position: absolute;
+  left: 50%;
+  width: 0;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 68px;
+  font-family: 'Manrope';
+}
+
+.forwhom_text:nth-of-type(-n+18) {
+  bottom: 50%;
+  -ms-transform-origin: 0% 106%;
+  -webkit-transform-origin: 0% 106%;
+  transform-origin: 0% 106%;
+  padding-bottom: 50%;
+}
+
+.forwhom_text:nth-of-type(1) {
+  transform: rotate(-79.64deg);;
+}
+
+.forwhom_text:nth-of-type(2) {
+  transform: rotate(-60.06deg);
+}
+
+.forwhom_text:nth-of-type(3) {
+  transform: rotate(-42.09deg);
+}
+
+.forwhom_text:nth-of-type(4) {
+  transform: rotate(-24.21deg)
+}
+
+.forwhom_text:nth-of-type(5) {
+  transform: rotate(-6.63deg);
+}
+
+.forwhom_text:nth-of-type(6) {
+  transform: rotate(11.24deg);
+}
+
+.forwhom_text:nth-of-type(7) {
+  transform: rotate(29.09deg);
+}
+
+.forwhom_text:nth-of-type(8) {
+  transform: rotate(54.39deg);
+}
+
+.forwhom_text:nth-of-type(9) {
+  transform: rotate(71.59deg);
+}
+
+.forwhom_text:nth-of-type(10) {
+  transform: rotate(87.79deg);;
+}
+
+.forwhom_text:nth-of-type(11) {
+  transform: rotate(104.73deg);
+}
+
+.forwhom_text:nth-of-type(12) {
+  transform: rotate(130deg);
+}
+
+.forwhom_text:nth-of-type(13) {
+  transform: rotate(147.74deg);
+}
+
+.forwhom_text:nth-of-type(14) {
+  transform: rotate(165.93deg);
+}
+
+.forwhom_text:nth-of-type(15) {
+  transform: rotate(-168.98deg);
+}
+
+.forwhom_text:nth-of-type(16) {
+  transform: rotate(-151.75deg);
+}
+
+.forwhom_text:nth-of-type(17) {
+  transform: rotate(-134.38deg);
+}
+
+.forwhom_text:nth-of-type(18) {
+  transform: rotate(-117.19deg);
+}
+
+.profile {
+  display: flex;
+  margin: 0 auto 0;
+  justify-content: space-between;
+  max-width: 1280px;
+}
+
+.profile_tabs {
+
+}
+
+.profile_title {
+  margin: 0;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 74px;
+  margin: 80px auto 80px;
+  max-width: 1280px;
+}
+
+.profile_tab {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 41px;
+  margin-bottom: 20px;
+}
+
+.profile_tab__active {
+  color: #C7357A;
+  border-bottom: 2px solid #C7357A ;
+}
+
+.profile_info {
+  
+}
+
+.profile_info_title {
+  margin: 0;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+  margin-bottom: 66px;
+}
+
+.profile_info_title:nth-child(1) {
+  margin-top: 5px;
+}
+
+.profile_info_title:last-child {
+  margin: 0;
+}
+
+.profile_forms {
+
+}
+
+.profile_form {
+  max-width: 714px;
+  margin-bottom: 50px;
+}
+
+.profile_form:last-child {
+  margin-bottom: 0;
+}
+
+.form_password {
+
+}
+
+.profile_password-button {
+  box-sizing: border-box;
+  margin-left: 30px;
+  border: 1px solid #C7357A;
+  border-radius: 10px;
+  background-color: #fff;
+  height: 42px;
+  width: 200px;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #C7357A;
+  cursor: pointer;
+  padding: 0;
+}
+
+.profile_submit-button {
+  width: 282px;
+  height: 59px;
+  border-radius: 15px;
+  border: none;
+  background-color: #C7357A;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  padding: 0;
+  color: #fff;
+  margin-top: 85px;
+  margin-left: 65px;
+}
+
+.orders {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 254px;
+}
+
+.orders_cont {
+  margin-right: 48px;
+}
+
+.orders_title {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+  color: #C7357A;
+}
+
+.orders_number {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+
+.orders_text {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+
+.orders_img {
+  max-height: 165px;
+}
+
+
+
+
+
+
+
 
