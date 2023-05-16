@@ -293,7 +293,7 @@ body {
 
 .block3{
     display: flex;
-    background-color: #ff007a;
+    background-color: #FFE9E9;
     border-radius: 20px;
     justify-content: space-around;
     padding: 3% 0 3% 3%;
@@ -451,7 +451,7 @@ body {
 }
 
 .description_border {
-    max-width: 1280px;
+    max-width: 1100px;
     margin: 0 auto 0;
     border-top: 1px solid #BFBFBF;
 }
@@ -477,5 +477,225 @@ body {
     align-items: center;
     margin-top: 16px;
     margin-bottom: 80px;
+}
+
+
+.profile {
+    display: flex;
+    margin: 0% auto 3%;
+    justify-content: space-between;
+    max-width: 1100px;
+}
+
+.profile_tabs {
+
+}
+
+.profile_title {
+    margin: 0;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 54px;
+    line-height: 74px;
+    margin: 0% auto 6%;
+    max-width: 1100px;
+}
+
+.profile_tab {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 41px;
+    margin-bottom: 20px;
+}
+
+.profile_tab__active {
+    color: #C7357A;
+    border-bottom: 2px solid #C7357A ;
+}
+
+.profile_info {
+
+}
+
+.profile_info_title {
+    margin: 0;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+    margin-bottom: 66px;
+}
+
+.profile_info_title:nth-child(1) {
+    margin-top: 5px;
+}
+
+.profile_info_title:last-child {
+    margin: 0;
+}
+
+.profile_forms {
+
+}
+
+.profile_form {
+    max-width: 714px;
+    margin-bottom: 50px;
+}
+
+.profile_form:last-child {
+    margin-bottom: 0;
+}
+
+.form_password {
+
+}
+
+.profile_password-button {
+    box-sizing: border-box;
+    margin-left: 30px;
+    border: 1px solid #C7357A;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 42px;
+    width: 200px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #C7357A;
+    cursor: pointer;
+    padding: 0;
+}
+
+.profile_password-button:hover{
+    background-color:#C7357A ;
+    color: white;
+}
+
+.profile_submit-button {
+    width: 230px;
+    height: 59px;
+    border-radius: 15px;
+    border: none;
+    background-color: #C7357A;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    padding: 0;
+    color: #fff;
+    margin-top: 85px;
+    margin-left: 65px;
+}
+
+.profile_submit-button:hover {
+    background-color: #FF0079;
+}
+
+
+
+.orders {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 254px;
+}
+
+.orders_cont {
+    margin-right: 48px;
+}
+
+.orders_title {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+    color: #C7357A;
+}
+
+.orders_number {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.orders_text {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.orders_img {
+    max-height: 165px;
+}
+
+
+/* Общие стили для футера */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+/* Стили для логотипа */
+.footer-logo img {
+    width: 100px;
+    height: auto;
+}
+
+/* Стили для меню */
+.footer-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.footer-menu li {
+    margin-right: 20px;
+}
+
+.footer-menu li:last-child {
+    margin-right: 0;
+}
+
+.footer-menu li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-menu li a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для социальных иконок */
+.footer-social a {
+    margin-left: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    color: #000;
+}
+
+/* Стили для иконок */
+.footer-social i {
+    font-size: 100px;
 }
 

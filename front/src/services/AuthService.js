@@ -19,7 +19,11 @@ const AuthService = () => {
         return $api.post('/logout')
     }
 
-    return {login, registration, logout}
+     const setPassword = async (id, password) => {
+        return $api.post(`/set-password/${id}`, {password})
+     }
+
+    return {login, registration, logout, setPassword}
 }
 
 export default AuthService

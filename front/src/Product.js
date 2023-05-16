@@ -7,6 +7,7 @@ function ProductPage() {
     const [product, setProduct] = useState({})
     const {takeProductByID} = ProductService()
     const {id} = useParams()
+    const [us, setUs] = useState([])
 
     useEffect(() => {
         takeProductByID(id).then((data) => setProduct(data.data[0]))
@@ -23,7 +24,11 @@ function ProductPage() {
                 <button className="buy-button">Купить</button>
             </div>
                 <div className="product-image">
-                    <img src={photo1} alt="Moschino TOY 2 BUBBLE GUM" />
+                    {us.map(({ProductID,PhotoID }) => (
+                        <div key={ProductID}>
+                            <img src={`http://localhost:8083/photo/${PhotoID}`}  />
+                        </div>
+                    ))}
                 </div>
                 <div className="product-sidebar">
                     <h2>Сделай правильный выбор</h2>

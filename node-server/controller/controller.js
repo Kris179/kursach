@@ -53,6 +53,17 @@ router.get('/products/:id', async (req, res) => {
 
 //authorization-routes
 
+router.post('/set-password/:id', async (req, res, next) => {
+    try {
+        const userID = req.params.id
+        const hashPassword = await bcrypt.hash(req.body.password, 3)
+        await knex('Users').update('Password', hashPassword).where('UserID', userID)
+        res.send('Ура')
+    } catch (e) {
+        next(e)
+    }
+})
+
 router.post(
     '/registration',
 

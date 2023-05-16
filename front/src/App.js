@@ -11,7 +11,9 @@ import {checkAuth, loginUser, setAuth} from "./actions/actions";
 import {useDispatch} from "react-redux";
 import Admin from "./Admin";
 import Product from "./Product";
+import Order from "./Order";
 import RegisterSuccess from "./RegisterSuccess";
+import SetNewPassword from "./pages/setNewPassword";
 
 const App = () => {
 
@@ -43,6 +45,8 @@ const App = () => {
                     <Route path='/For_whom' element={<For_whom/>}></Route>
                     <Route path='/admin' element={<Admin/>}></Route>
                     <Route path='/register-success' element={<RegisterSuccess/>}></Route>
+                    <Route path='/set-password/:id' element={<SetNewPassword/>}></Route>
+                    <Route path='/Order' element={<Order/>}></Route>
                 </Routes>
             </Router>
 
