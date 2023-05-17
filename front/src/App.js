@@ -37,8 +37,8 @@ const App = () => {
             <Router>
 
                 <Header/>
-                <Profile />
-                /* <Routes>
+                <Order />
+                {/* <Routes>
                     <Route exact path='/' element={<Home/>}> </Route>
                     <Route path='/about' element={<About/>}></Route>
                     <Route path='/Profile' element={<Profile/>}></Route>
@@ -49,7 +49,7 @@ const App = () => {
                     <Route path='/register-success' element={<RegisterSuccess/>}></Route>
                     <Route path='/set-password/:id' element={<SetNewPassword/>}></Route>
                     <Route path='/order/:id' element={<Order/>}></Route>
-                </Routes>
+                </Routes> */}
 
             </Router>
 

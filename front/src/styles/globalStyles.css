@@ -805,7 +805,15 @@ body {
 .orders {
   display: flex;
   justify-content: space-between;
-  margin-right: 254px;
+  /* margin-right: 254px; */
+}
+
+.profile_orders {
+  display: flex;
+  max-width: 800px;
+  row-gap: 40px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .orders_cont {
@@ -843,6 +851,156 @@ body {
   max-height: 165px;
 }
 
+.orders_conts {
+  
+  margin: 0 auto 0;
+
+  max-width: 1280px;
+}
+.cont {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 20px;
+}
+.orders_forms {
+  width: 738px;
+  border: 2px solid #E5E8FF;
+  border-radius: 30px;
+  padding: 20px 40px;
+  background: #F7F6FF;
+}
+
+.orders_form {
+
+}
+
+.orders_form_label {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 11px;
+  margin-top: 21px;
+}
+
+.orders_forms_title {
+  margin: 30px 0 25px;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 55px;
+}
+
+.orders_form_subtitle {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 41px;
+  margin-bottom: 20px;
+}
+
+.orders_warning {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #9F9F9F;
+  margin-top: 21px;
+}
+
+.orders_link {
+  color: rgba(79, 107, 255, 1);
+}
+
+.orders_price {
+
+}
+
+.orders_price_card {
+  background: #F7F6FF;
+  border: 2px solid #E5E8FF;
+  border-radius: 30px;
+  min-height: 433.2px;
+}
+
+.orders_card {
+  margin: 30px;
+}
+
+.orders_card_nav {
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+  margin-bottom: 22px;
+}
+
+.order_card_code {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #9F9F9F;
+  margin: 0;
+}
+
+.order_card_del_button {
+  background-color: initial;
+  padding: 0;
+  margin: 0;
+  border: none;
+  height: 20px;
+  margin-top: -5px;
+}
+
+.orders_card_info {
+
+}
+
+.orders_card_header {
+  margin: 0 75px 0 75px;
+  display: flex;
+  column-gap: 45px;
+}
+
+.orders_card_img {
+  width: 42px;
+  height: 75px;
+}
+
+.orders_card_title {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+    color: #2F3037;
+}
+
+.orders_card_price {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.orders_price_submit {
+  margin: 30px 91px 0 91px;
+  padding: 0;
+  border: none;
+  background: #000000;
+  border-radius: 10px;
+  width: 340px;
+  height: 50px;
+  color: #FFFFFF;
+}
 
 
 

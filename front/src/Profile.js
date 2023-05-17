@@ -59,8 +59,13 @@ function Profile() {
                 </div>
                 {tab === "orders" &&
                     orders.map(({...props}, index) => {
-                        return <OrderItem {...props} key={index}/>
+                        return (
+                          <div className="profile_orders">
+                            <OrderItem {...props} key={index}/>
+                          </div>
+                        )
                     })
+                    
                 }
                 {tab === "info" &&
                     <div className="profile_info">
