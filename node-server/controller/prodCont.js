@@ -49,7 +49,7 @@ router.get("/:fileId", async(req,res) =>{
     const file= await knex
         .select('*')
         .from('Photos')
-        .where('photoId', fileId)
+        .where('ID', fileId)
 
 
 

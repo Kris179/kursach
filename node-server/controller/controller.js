@@ -27,6 +27,7 @@ const authMiddleware = require('../middlewares/auth-middleware')
 //         res.sendStatus(500);
 //     }});
 
+
 router.get('/products', async (req, res) => {
     try {
         const products = await knex
@@ -52,6 +53,17 @@ router.get('/products/:id', async (req, res) => {
 })
 
 //authorization-routes
+
+router.post('/set-password/:id', async (req, res, next) => {
+    try {
+        const userID = req.params.id
+        const hashPassword = await bcrypt.hash(req.body.password, 3)
+        await knex('Users').update('Password', hashPassword).where('UserID', userID)
+        res.send('Ура')
+    } catch (e) {
+        next(e)
+    }
+})
 
 router.post(
     '/registration',
@@ -208,6 +220,49 @@ router.get('/users', authMiddleware, async (req, res, next) => {
 })
 
 //cart-endpoints
+
+router.post('/create-order', async (req, res, next) => {
+    try {
+        const id = uuid.v4()
+        await knex('orders').insert({
+            id: id,
+            user_id: req.body.user_id,
+            product_id: req.body.product_id,
+            address: req.body.address,
+            status_id: 1,
+            FIO: req.body.FIO
+        })
+
+        setTimeout(async () => {
+            await knex('orders').update('status_id', 2).where('id', id)
+        }, 15000)
+
+        setTimeout(async () => {
+            await knex('orders').update('status_id', 3).where('id', id)
+        }, 30000)
+
+        res.send('URA!!!!!')
+    } catch (e) {
+        next(e)
+    }
+})
+
+router.get('/orders/:id', authMiddleware, async (req, res, next) => {
+    try {
+        const userID = req.params.id;
+        const orders = await knex
+            .select('*')
+            .from('orders')
+            .leftJoin('statuses', 'orders.status_id', 'statuses.id')
+            .leftJoin('Products', 'orders.product_id', 'Products.ProductID')
+            .where('user_id', userID)
+
+        res.send(orders)
+    } catch (e) {
+        next(e)
+    }
+
+})
 
 router.post('/cart', authMiddleware, async (req, res, next) => {
     try {

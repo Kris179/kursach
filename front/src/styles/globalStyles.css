@@ -295,7 +295,7 @@ body {
 
 .block3{
     display: flex;
-    background-color: #ff007a;
+    background-color: #FFE9E9;
     border-radius: 20px;
     justify-content: space-around;
     padding: 3% 0 3% 3%;
@@ -414,10 +414,12 @@ body {
     flex-grow: 1;
     max-width: 178px;
     max-height: 52px;
+   text-decoration: none;
+    color: white !important;
 }
 
-.buy-button {
-
+.buy-button:hover  {
+    background-color: #1e2125 ;
 }
 
 .product-image {
@@ -453,7 +455,7 @@ body {
 }
 
 .description_border {
-    max-width: 1280px;
+    max-width: 1100px;
     margin: 0 auto 0;
     border-top: 1px solid #BFBFBF;
 }

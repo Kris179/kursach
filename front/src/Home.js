@@ -7,6 +7,7 @@ import CatalogueCards from "./components/CatalogCards";
 import CatalogCards from "./components/CatalogCards";
 import photo from "./img/home1.png";
 import FormPr from "./components/Product";
+import Footer from "./components/Footer";
 
 
 function Home() {
@@ -46,7 +47,7 @@ function Home() {
                 </div>
 
             </div>
-            <FormPr/>
+            <Footer/>
         </div>
     );
 }

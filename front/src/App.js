@@ -11,8 +11,10 @@ import {checkAuth, loginUser, setAuth} from "./actions/actions";
 import {useDispatch} from "react-redux";
 import Admin from "./Admin";
 import Product from "./Product";
+import Order from "./Order";
 import RegisterSuccess from "./RegisterSuccess";
 import ProductPage from "./Product";
+import SetNewPassword from "./pages/setNewPassword";
 
 const App = () => {
 
@@ -36,7 +38,7 @@ const App = () => {
 
                 <Header/>
                 <Profile />
-                {/* <Routes>
+                /* <Routes>
                     <Route exact path='/' element={<Home/>}> </Route>
                     <Route path='/about' element={<About/>}></Route>
                     <Route path='/Profile' element={<Profile/>}></Route>
@@ -45,7 +47,10 @@ const App = () => {
                     <Route path='/For_whom' element={<ForWhom/>}></Route>
                     <Route path='/admin' element={<Admin/>}></Route>
                     <Route path='/register-success' element={<RegisterSuccess/>}></Route>
-                </Routes> */}
+                    <Route path='/set-password/:id' element={<SetNewPassword/>}></Route>
+                    <Route path='/order/:id' element={<Order/>}></Route>
+                </Routes>
+
             </Router>
 
         </>

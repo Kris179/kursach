@@ -43,7 +43,7 @@ const CatalogCards = ({type}) => {
             <div className="catalogue">
                 {us.map(({ProductID, Name, Price, PhotoID }) => (
                     <div key={ProductID} className="product-card">
-                        <img src={`http://localhost:8083/api/photo/${PhotoID}`} alt={Name} />
+                        <img src={`http://localhost:8083/photo/${PhotoID}`} alt={Name} />
                         <div className="product-info">
                             <h4>{Name}</h4>
                             <p>{Price} ₽</p>
