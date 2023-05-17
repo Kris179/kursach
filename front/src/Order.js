@@ -8,10 +8,16 @@ import ProductService from "./services/ProductService";
 
 const CheckoutPage = () => {
     const {id} = useParams()
+    const [product, setProduct] = useState({})
     const {curUser} = useSelector((state) => state)
-    const {createOrder} = ProductService()
+    const {createOrder, takeProductByID} = ProductService()
     const navigate = useNavigate()
 
+    useEffect(() => {
+        takeProductByID(id).then((data) => {
+            setProduct(data.data[0])
+        })
+    }, [])
     const handleSubmit = async (FIO, address) => {
         try {
            await createOrder(curUser.UserID, id, FIO, address)
@@ -117,6 +123,10 @@ const CheckoutPage = () => {
                 )}
 
         </Formik>
+            <div>{product.Name}
+                {product.Price}
+                {product.description}
+                {product.title}</div>
         </div>
     );
 };

@@ -8,21 +8,27 @@ import {loginUser, setAuth} from "./actions/actions";
 import photo1 from "./img/Мишка.png";
 import AuthService from "./services/AuthService";
 import {useNavigate} from "react-router-dom";
+import ProductService from "./services/ProductService";
 
 
 function Profile() {
 
     const {curUser} = useSelector((state) => state)
     const [users, setUsers] = useState([])
+    const [orders, setOrders] = useState([])
     const [tab, setTab] = useState("info")
     const {fetchUsers} = AdminService()
+    const {takeOrders} = ProductService()
     const navigate = useNavigate()
     useEffect(() => {
         fetchUsers().then((data) => {
             setUsers(data.data)
         })
+        takeOrders(curUser.UserID).then((data) => {
+            setOrders(data.data)
+        })
     }, [])
-
+    console.log(orders)
     const dispatch = useDispatch()
 
     const handleSubmit = async (email, password) => {
@@ -52,15 +58,9 @@ function Profile() {
                     <p onClick={() => handleTab("orders")} className={tab === "orders" ? "profile_tab profile_tab__active" : "profile_tab"}>история заказов</p>
                 </div>
                 {tab === "orders" &&
-                    <div className="orders">
-                        <div className="orders_cont">
-                            <h2 className="orders_title">Выполнен</h2>
-                            <p className="orders_number">Заказ №356765432</p>
-                            <p className="orders_text">3 марта 2021 г.</p>
-                            <p className="orders_text">8 900 ₽</p>
-                        </div>
-                        <img className="orders_img" src={photo1} alt="фото" />
-                    </div>
+                    orders.map(({...props}, index) => {
+                        return <OrderItem {...props} key={index}/>
+                    })
                 }
                 {tab === "info" &&
                     <div className="profile_info">
@@ -173,3 +173,18 @@ function Profile() {
 // disabled={!(isValid && dirty) || isSubmitting}
 
 export default Profile;
+
+const OrderItem = ({FIO, Name, status, PhotoID, address, title, date, description, id, Price}) => {
+    const newDate = new Date(date).toLocaleString()
+    return (
+        <div className="orders">
+            <div className="orders_cont">
+                <h2 className="orders_title">{status}</h2>
+                <p className="orders_number">Заказ №{id}</p>
+                <p className="orders_text">{newDate}</p>
+                <p className="orders_text">{Price} ₽</p>
+            </div>
+            <img className="orders_img" src={`http://localhost:8083/photo/${PhotoID}`} alt="фото" />
+        </div>
+    )
+}

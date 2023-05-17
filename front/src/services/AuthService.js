@@ -23,6 +23,8 @@ const AuthService = () => {
         return $api.post(`/set-password/${id}`, {password})
      }
 
+
+
     return {login, registration, logout, setPassword}
 }
 

@@ -412,10 +412,12 @@ body {
     flex-grow: 1;
     max-width: 178px;
     max-height: 52px;
+   text-decoration: none;
+    color: white !important;
 }
 
-.buy-button {
-
+.buy-button:hover  {
+    background-color: #1e2125 ;
 }
 
 .product-image {

@@ -14,7 +14,11 @@ const ProductService = () => {
         return $api.post('/create-order', {user_id, product_id, FIO, address})
     }
 
-    return {takeProductByID, createOrder}
+    const takeOrders = async (id) => {
+        return $api.get(`/orders/${id}`)
+    }
+
+    return {takeProductByID, createOrder, takeOrders}
 }
 
 export default ProductService
