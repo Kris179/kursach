@@ -1,25 +1,35 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import * as Yup from "yup";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useSelector} from "react-redux";
 import AdminService from "./services/AdminService";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import ProductService from "./services/ProductService";
 
 const CheckoutPage = () => {
+    const {id} = useParams()
     const {curUser} = useSelector((state) => state)
+    const {createOrder} = ProductService()
     const navigate = useNavigate()
 
+    const handleSubmit = async (FIO, address) => {
+        try {
+           await createOrder(curUser.UserID, id, FIO, address)
+            navigate('/Profile')
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     return (
         <div>
-            <h2>Оформление заказа</h2>
+            <h2>Контакты</h2>
             <Formik
                 initialValues={
                 {
                     FIO: curUser.FIO,
                     Email: curUser.Email,
-                    Login: curUser.Login, // ?
-                    Password: curUser.password // ?
+                    address: '' // ?
                 }
             }
 
@@ -28,7 +38,7 @@ const CheckoutPage = () => {
                     .required('Обязательное поле!'),
                 Email: Yup.string()
                     .required('Обязательное поле!'),
-                Login: Yup.string()
+                address: Yup.string()
                     .required('Обязательное поле!'),
             })}
 
@@ -79,14 +89,34 @@ const CheckoutPage = () => {
 
                                 </div>
 
+                                <div className="profile_form">
+
+                                    {<label className={'input'}>Адрес</label>}
+                                    <Field
+                                        name={"address"}
+                                        className="custom-input"
+                                        id={"address"}
+                                        type={'text'}
+                                        placeholder="&nbsp;"
+                                        enableReinitialize={true}
+                                    />
+
+                                    <ErrorMessage className={'errorMessage'} name={'FIO'} component={'div'} />
+
+                                </div>
+
 
                             </div>
-
+                            <button type={'submit'} disabled={!(isValid && dirty) || isSubmitting} onClick={async () => {
+                                isSubmitting = true
+                                await handleSubmit(values.FIO, values.address)
+                                setTimeout(() => resetForm(), 500)
+                            }} className="register-button">Оформить заказ</button>
                         </Form>
                     </>
                 )}
+
         </Formik>
-                <button type="submit">Оформить заказ</button>
         </div>
     );
 };

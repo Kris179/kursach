@@ -46,7 +46,7 @@ const App = () => {
                     <Route path='/admin' element={<Admin/>}></Route>
                     <Route path='/register-success' element={<RegisterSuccess/>}></Route>
                     <Route path='/set-password/:id' element={<SetNewPassword/>}></Route>
-                    <Route path='/Order' element={<Order/>}></Route>
+                    <Route path='/order/:id' element={<Order/>}></Route>
                 </Routes>
             </Router>
 

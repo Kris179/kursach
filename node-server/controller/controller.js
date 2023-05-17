@@ -220,6 +220,42 @@ router.get('/users', authMiddleware, async (req, res, next) => {
 
 //cart-endpoints
 
+router.post('/create-order', async (req, res, next) => {
+    try {
+        await knex('orders').insert({
+            user_id: req.body.user_id,
+            product_id: req.body.product_id,
+            address: req.body.address,
+            status_id: 1,
+            FIO: req.body.FIO
+        })
+
+        setTimeout(() => {
+            knex('orders').update('status_id', 2).where('user_id', req.body.user_id)
+        }, 15000)
+
+        setTimeout(() => {
+            knex('orders').update('status_id', 3).where('user_id', req.body.user_id)
+        }, 30000)
+
+        res.send('URA!!!!!')
+    } catch (e) {
+        next(e)
+    }
+})
+
+router.get('/orders/:id', authMiddleware, async (req, res, next) => {
+    try {
+        const userID = req.params.id;
+        const orders = await knex.select('*').from('orders').where('user_id', userID)
+
+        res.send(orders)
+    } catch (e) {
+        next(e)
+    }
+
+})
+
 router.post('/cart', authMiddleware, async (req, res, next) => {
     try {
         const cart = await knex
