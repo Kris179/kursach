@@ -15,6 +15,63 @@ const {body, validationResult} = require('express-validator')
 
 const authMiddleware = require('../middlewares/auth-middleware')
 
+const passport = require("passport");
+
+
+const app = express();
+app.use(require("cookie-parser")());
+app.use(require("body-parser").urlencoded({ extended: true }));
+app.use(
+    require("express-session")({
+        secret: "keyboard cat",
+        resave: true,
+        saveUninitialized: true,
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+const VKontakteStrategy = require('passport-vkontakte').Strategy;
+
+passport.use(
+    new VKontakteStrategy(
+        {
+            clientID: "51649688",
+            clientSecret: "NpkJI5CyOidXb5owoCbC",
+            callbackURL: "http://localhost:8083/api/auth/vkontakte/callback",
+        },
+        function (accessToken, refreshToken, params, profile, done) {
+            console.log("VERIFY", profile);
+            return done(null, profile);
+        }
+    )
+);
+passport.serializeUser(function (user, done) {
+    console.log("SERIALIZE", user);
+    done(null, JSON.stringify(user));
+});
+
+passport.deserializeUser(function (data, done) {
+    console.log("DESERIALIZE", data);
+    done(null, JSON.parse(data));
+});
+
+app.get("/auth/vkontakte", passport.authenticate("vkontakte"));
+
+app.get(
+    "auth/vkontakte/callback",
+    passport.authenticate("vkontakte", {
+        successRedirect: "/vkuser", //направить после успеха
+        failureRedirect: "http://localhost:3000", //направить после неудачи
+    })
+);
+
+app.get("/vkuser", async function (req, res) {
+    console.log("GET / ", req.user);
+    res.send(req.user || "null");
+});
+
+
 //all-user-routes
 // router.get("/photo/:PhotoID", async (req, res) => {  const id = req.params.PhotoID || 0;
 //

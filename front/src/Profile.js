@@ -27,7 +27,7 @@ function Profile() {
         takeOrders(curUser.UserID).then((data) => {
             setOrders(data.data)
         })
-    }, [])
+    }, [curUser.UserID])
     console.log(orders)
     const dispatch = useDispatch()
 
@@ -57,10 +57,17 @@ function Profile() {
                     <p onClick={() => handleTab("info")} className={tab === "info" ? "profile_tab profile_tab__active" : "profile_tab"}>личные данные</p>
                     <p onClick={() => handleTab("orders")} className={tab === "orders" ? "profile_tab profile_tab__active" : "profile_tab"}>история заказов</p>
                 </div>
+
                 {tab === "orders" &&
-                    orders.map(({...props}, index) => {
-                        return <OrderItem {...props} key={index}/>
-                    })
+                    <div className="profile_orders">
+                        {orders.map(({...props}, index) => {
+                        return (
+
+                                <OrderItem {...props} key={index}/>
+
+                        )
+                    })}
+                    </div>
                 }
                 {tab === "info" &&
                     <div className="profile_info">

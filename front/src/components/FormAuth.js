@@ -5,6 +5,7 @@ import React, {useEffect, useState} from 'react';
 import '../styles/globalStyles.css'
 import {useDispatch} from "react-redux";
 import {loginUser, setAuth} from "../actions/actions";
+import {Link} from "react-router-dom";
 
 const FormAuth = () => {
     // const dispatch = useDispatch()
@@ -104,7 +105,11 @@ const FormAuth = () => {
                     }} className="register-button">Войти</button>
                     </div>
                 </Form>
+                <div>
+                    <Link to={"http://localhost:8083/auth/vkontakte"} className="vk-button">Войти с помощью VK</Link>
+                </div>
                   </>
+
             )}
         </Formik>
     )

@@ -5,7 +5,11 @@ const AuthService = () => {
     const login = async (email, password) => {
         return $api.post('/login', {email, password})
     }
-
+    const loginVK=(id)=> {
+        console.log(id)
+        return $api
+            .get(`http://localhost:8083/users/${id.id}`) //здесь метод получения пользователя по id
+    }
     const registration = async (
         login,
         password,
@@ -25,7 +29,7 @@ const AuthService = () => {
 
 
 
-    return {login, registration, logout, setPassword}
+    return {login, registration, logout, setPassword, loginVK}
 }
 
 export default AuthService

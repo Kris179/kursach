@@ -14,6 +14,7 @@ import Product from "./Product";
 import Order from "./Order";
 import RegisterSuccess from "./RegisterSuccess";
 import SetNewPassword from "./pages/setNewPassword";
+import Empty from "./Empty";
 
 const App = () => {
 
@@ -47,6 +48,7 @@ const App = () => {
                     <Route path='/register-success' element={<RegisterSuccess/>}></Route>
                     <Route path='/set-password/:id' element={<SetNewPassword/>}></Route>
                     <Route path='/order/:id' element={<Order/>}></Route>
+                    <Route path='/vk/:id' element={<Empty />} />
                 </Routes>
             </Router>
 

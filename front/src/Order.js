@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import AdminService from "./services/AdminService";
 import {useNavigate, useParams} from "react-router-dom";
 import ProductService from "./services/ProductService";
+import photo1 from "./img/Мишка.png";
 
 const CheckoutPage = () => {
     const {id} = useParams()
@@ -28,8 +29,7 @@ const CheckoutPage = () => {
     }
 
     return (
-        <div>
-            <h2>Контакты</h2>
+        <div className='orders_conts'>
             <Formik
                 initialValues={
                 {
@@ -58,13 +58,16 @@ const CheckoutPage = () => {
                       isSubmitting,
                       resetForm
                   }) => (
-                    <>
+                    <div className='cont'>
                         <Form>
-                            <div className="profile_forms">
+                            <h2 className='orders_forms_title'>Контакты</h2>
+                            <div className="orders_forms">
 
-                                <div className="profile_form">
+                                <h2 className='orders_form_subtitle'>Ваши контакты</h2>
+                                <div className="orders_form">
 
-                                    {<label className={'input'} >ФИО</label>}
+
+                                    {<p className={'orders_form_label'}>ФИО</p>}
                                     <Field
                                         name={"FIO"}
                                         className="custom-input"
@@ -78,9 +81,9 @@ const CheckoutPage = () => {
 
                                 </div>
 
-                                <div className="profile_form">
+                                <div className="orders_form">
 
-                                    {<label className={'input'}>Эл. почта</label>}
+                                    {<p className={'orders_form_label'}>Эл. почта</p>}
                                     <Field
                                         name={"Email"}
                                         className="custom-input"
@@ -95,9 +98,10 @@ const CheckoutPage = () => {
 
                                 </div>
 
-                                <div className="profile_form">
 
-                                    {<label className={'input'}>Адрес</label>}
+                                <div className="orders_form">
+
+                                    {<p className={'orders_form_label'}>Адрес</p>}
                                     <Field
                                         name={"address"}
                                         className="custom-input"
@@ -117,16 +121,28 @@ const CheckoutPage = () => {
                                 isSubmitting = true
                                 await handleSubmit(values.FIO, values.address)
                                 setTimeout(() => resetForm(), 500)
-                            }} className="register-button">Оформить заказ</button>
+                            }} className="order-button">Оформить заказ</button>
                         </Form>
-                    </>
+                    </div>
                 )}
 
         </Formik>
-            <div>{product.Name}
-                {product.Price}
-                {product.description}
-                {product.title}</div>
+            <div className='orders_price'>
+                <h2 className='orders_forms_title'>Ваши товары</h2>
+                <div className='orders_price_card'>
+                    <div className='orders_card'>
+                        <div className='orders_card_nav'>
+            <div className="orders_card_info" >
+                <div className='orders_card_header'>
+                    <img className="orders_card_img" src={photo1} alt="фото" />
+                    <h2 className="orders_card_title">{product.Name}</h2>
+                </div>
+                <p className="orders_card_price">{product.Price}₽</p>
+            </div>
+        </div>
+        </div>
+                </div>
+            </div>
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import photo1 from "./img/Мишка.png";
 import {Link, useParams} from "react-router-dom";
 import ProductService from "./services/ProductService";
+import Footer from "./components/Footer";
 
 function ProductPage() {
     const [product, setProduct] = useState({})
@@ -41,7 +42,7 @@ function ProductPage() {
                 <p>{product.description}</p>
             </div>
             <div className="product-footer">
-                <p>Здесь будет футер страницы.</p>
+                <Footer/>
             </div>
         </div>
     );

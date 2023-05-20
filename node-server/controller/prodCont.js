@@ -44,25 +44,20 @@ router.post("/upload",
 })
 
 
-router.get("/:fileId", async(req,res) =>{
+router.get("/:fileId", async (req, res) => {
     const fileId = req.params.fileId;
-    const file= await knex
-        .select('*')
-        .from('Photos')
-        .where('ID', fileId)
+    const file = await knex.select("*").from("Photos").where("ID", fileId);
 
-
-
-    if (!file){
+    if (!file || file.length === 0) {
         res.sendStatus(404);
         return;
-
     }
-    console.log(file[0].type)
 
-    res.setHeader("Content-Type", file[0].type)
+    console.log(file[0].type);
+
+    res.setHeader("Content-Type", file[0].type);
     res.sendFile(file[0].Path);
-})
+});
 
 module.exports = router;
 
