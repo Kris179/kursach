@@ -492,11 +492,24 @@ body {
 }
 
 .forwhom_description {
+  /* transform: translate(-900px); */
+  display: none;
+  transition: all 0.5s ease-in-out;
+  max-height: 500px;
+  width: 413px;
+  z-index: 1;
+}
+
+.forwhom_description_active {
   display: flex;
   flex-direction: column;
-  max-width: 413px;
   margin-bottom: 127px;
+  /* transform: translate(0); */
+  transition: all 0.5s ease-in-out;
+  min-width: 413px;
 }
+
+
 
 .forwhom_description_title {
   font-family: 'Manrope';
@@ -552,6 +565,7 @@ body {
   color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
   margin: 0;
+  width: 700px;
 }
 
 .forman {
@@ -562,17 +576,42 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-end;
+  cursor: pointer;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.forman_aclive {
+  width: 80%;
+  transition: all 0.5s ease-in-out;
+  cursor: auto;
+}
+
+.forman_disaclive {
+  width: 20%;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 .forman_title {
   top: 286px;
-  left: -150px;
+  left: -220px;
   transform: rotate(90deg);
 }
 
 .forman_img {
   max-height: 631px;
+  display: block;
 }
+
+.forman_img_disabled {
+  display: none;
+}
+
+
+
+
+
 
 .forwoman {
   width: 50%;
@@ -582,11 +621,29 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-end;
+  cursor: pointer;
+  z-index: 2;
+  overflow: hidden;
 }
+
+.forwoman_disactive {
+  width: 20%;
+  transition: width 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.forwoman_active {
+  width: 80%;
+  transition: width 0.5s ease-in-out;
+  cursor: auto;
+  flex-direction: row-reverse;
+}
+
+
 
 .forwoman_title {
   top: 286px;
-  right: -123px;
+  right: -220px;
   transform: rotate(-90deg);
 }
 
@@ -594,12 +651,22 @@ body {
   position: absolute;
   top: 38.572%;
   right: 44.445%;
-  
   /* display: flex; */
   color: #FFFFFF;
   width: 160px;
   height: 160px;
+  z-index: 4;
+  transition: right 0.5s ease-in-out;
 }
+
+.forwhom_circle_man {
+right: -6%;
+}
+
+.forwhom_circle_woman {
+  right: 95%;
+}
+
 
 .forwhom_text {
   position: absolute;

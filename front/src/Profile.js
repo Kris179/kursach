@@ -58,15 +58,14 @@ function Profile() {
                     <p onClick={() => handleTab("orders")} className={tab === "orders" ? "profile_tab profile_tab__active" : "profile_tab"}>история заказов</p>
                 </div>
                 {tab === "orders" &&
-                    orders.map(({...props}, index) => {
+                    <div className="profile_orders">
+                      {orders.map(({...props}, index) => {
                         return (
-                          <div className="profile_orders">
-                            <OrderItem {...props} key={index}/>
-                          </div>
+                          <OrderItem {...props} key={index}/>
                         )
-                    })
-                    
-                }
+                      })}
+                    </div>
+                  }
                 {tab === "info" &&
                     <div className="profile_info">
                         <p className="profile_info_title">ФИО</p>
