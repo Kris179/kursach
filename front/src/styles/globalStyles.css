@@ -489,6 +489,7 @@ body {
     margin: 0 auto 0;
     max-width: 1440px;
     height: 700px;
+    overflow: hidden;
 }
 
 .forwhom_description {
