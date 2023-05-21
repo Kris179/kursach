@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import Man from './img/for_man.png';
 import Woman from './img/for_woman.png';
+import { useNavigate } from 'react-router';
 const ForWhom = () => {
 
-  const [ who, setWho ] = useState("")
-  // const styleManDescription = who === "man" ? "forwhom_description" : "forwhom_description forwhom_description_visibility";
+  let navigate = useNavigate();
+  const [ who, setWho ] = useState("");
+  const handleCatalog = () => navigate("/Catalog");
 
     return (
       <div className="forwhom_cont">
@@ -18,7 +20,7 @@ const ForWhom = () => {
             <p className="forwhom_description_subtitle">Покупая духи в нашем магазине, вы можете быть уверены, что получите только оригинальную продукцию высокого качества. Мы гарантируем быструю доставку и профессиональный сервис.
                 Не упустите возможность выразить свою мужественность и силу с нашими ароматами
                 для успешных мужчин.</p>
-            <button className="forwhom_description_button">Перейти к каталогу</button>
+            <button onClick={() => handleCatalog()} className="forwhom_description_button">Перейти к каталогу</button>
           </div>
           
           <p className="title forman_title">for man</p>
@@ -31,7 +33,7 @@ const ForWhom = () => {
             <p className="forwhom_description_subtitle">Мы знаем, что каждая девушка уникальна, и именно поэтому мы предлагаем такое разнообразие ароматов: цветочные, фруктово-ягодные, древесные, пряные и многие другие. Каждый аромат - это настоящее произведение искусства, созданное лучшими парфюмерами мира.</p>
             <p className="forwhom_description_subtitle">Покупая духи в нашем магазине, вы можете быть уверены, что получите только оригинальную продукцию высокого качества. Мы гарантируем быструю доставку и профессиональный сервис.
               Не упустите возможность раскрыть свою женственность и красоту с нашими ароматами.</p>
-            <button className="forwhom_description_button">Перейти к каталогу</button>
+            <button onClick={() => handleCatalog()} className="forwhom_description_button">Перейти к каталогу</button>
           </div>
           <p className="title forwoman_title">woman</p>
         </div>
